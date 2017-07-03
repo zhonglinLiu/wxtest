@@ -1,0 +1,70 @@
+<!--pages/product/product.wxml-->
+<view class="container">
+<view class="detail-header-box">
+  <view class="fixed-cart-box">
+    <view class="fixed-cart" bindtap="jumpToCart">
+      <image  src="../imgs/icon/cart@top.png"></image>
+      <view class="cartNum">{{cartTotalCount}}</view>
+    </view>
+  </view>
+
+  <view class="product-img-box">
+    <view class="product-img">
+      <image src="{{product.main_img_url}}"></image>
+    </view>
+  </view>
+
+  <view class="cart-bar-box">
+    <view class="cart-select">
+      <picker value="" range="{{productNumArr}}" class="{{product.stock<=0 ? 'disabled' : ''}}" bindchange="changeProductNum" >
+        <view class="title">数量</view>
+        <view class="num">{{productNum}}</view>
+        <image src="../imgs/icon/arrow@down.png" class="icon"></image>
+        
+      </picker>
+    </view>
+    <view class="cart-middel-line"></view>
+    <view class="add" bindtap="onAddingtoTopCart">
+      <view class="cart-add-text">加入购物车</view>
+      <image src="../imgs/icon/cart.png"></image>
+    </view>
+  </view>
+
+  <view class="product-desc">
+    <view class="product-stock">{{product.stock>0 ? '有货' : '无货'}}    </view>
+    <view class="product-name">{{product.name}}</view>
+    <view class="product-price">￥{{product.price}}</view>
+  </view>
+</view>
+
+<view class="detail-footer-box">
+  <view class="footer-tab">
+    <block wx:for="{{['商品详情','商品参数','售后保障']}}" >
+      <view class="{{tabIndex==index ? 'selected' : ''}} tab-item " bindtap="changeTab" data-index="{{index}}" >
+        {{item}}
+      </view>
+      
+    </block>
+  </view>
+
+  <view class="detail-product-box">
+    <view hidden="{{tabIndex!=0}}" class="product-image" >
+      <block wx:for="{{product.imgs}}" >
+        <image mode="scaleToFill" src="{{item.img_url.url}}"></image>
+      </block>
+    </view>
+    <view hidden="{{tabIndex!=1}}">
+      <block wx:for="{{product.properties}}" >
+        <view class="properties-box">
+          <text class="properties-name" >{{item.name}}</text>
+          <text class="properties-detail" >{{item.detail}}</text>
+        </view>
+      </block>
+    </view>
+    <view hidden="{{tabIndex!=2}}" class="properties-sale" >
+      七天无理由退货
+    </view>
+  </view>
+</view>
+
+</view>

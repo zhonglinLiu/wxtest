@@ -1,0 +1,38 @@
+<!--pages/order/order.wxml-->
+<view class="container">
+  <block wx:if="{{!addressInfo}}">
+    <view bindtap="addAddress" class="add-products"><text>+</text><text>添加收货地址</text></view>
+  </block>
+  <block wx:else>
+    <view class="showAddress">
+      <view class="address-box">
+         <view class="address-top">
+           <view class="name">{{addressInfo.name}}</view>
+           <view class="mobile">{{addressInfo.mobile}}</view>
+         </view>
+         <view class="address-bottom">{{addressInfo.detail}}</view>
+      </view>
+      <view bindtap="addAddress" class="arrow" ><image src="/pages/imgs/icon/arrow@grey.png"></image></view>
+    </view>
+  </block>
+  <view class="order-list">
+  <block wx:for="{{orders}}" >
+
+    <view class="product-box">
+      <image class="product-img" src="{{item.main_img_url}}"></image>
+      <view class="product-desc">
+        <view class="title">{{item.name}}</view>
+        <view class="price">{{item.price}}</view>
+      </view>
+      <view class="product-count">×{{item.count}}</view>
+    </view>
+
+  </block>
+
+  <view class="order-bottom">
+    <view class="total-price">合计 : ￥{{totalPrice}}</view>
+    <view class="pay">结算</view>
+  </view>
+  </view>
+
+</view>

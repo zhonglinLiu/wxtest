@@ -1,0 +1,5 @@
+/* pages/tool/tool.wxss */
+
+.add-height{
+  height: 800rpx
+}

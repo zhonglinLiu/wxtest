@@ -1,0 +1,114 @@
+/* pages/order/order.wxss */
+
+.add-products{
+  width:100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #555;
+  border-bottom: 1px solid #ccc;
+}
+.add-products text{
+  
+}
+
+.order-list{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1rpx solid #ccc;
+}
+
+.order-list .product-box{
+  width:730rpx;
+  height: 180rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
+}
+.order-list .product-box image{
+  width:180rpx;
+  height: 180rpx;
+  vertical-align: middle;
+}
+
+.order-list .product-box .product-desc{
+  margin-top:20rpx;
+  width:500rpx; font-size: 30rpx;
+  color: #555;
+
+}
+.order-list .product-box .product-count{
+  margin-top:20rpx;
+  width:50rpx;font-size: 30rpx;
+  color: #555;
+}
+
+.order-bottom{
+  height:120rpx;
+  width:100%;
+  line-height: 120rpx;
+  position: absolute;
+  left:0;
+  bottom: 0;
+  font-size: 30rpx;
+  border-top: 1px solid #AB956D;
+}
+.order-bottom .total-price{
+  float: left;
+  width:480rpx;
+  height: 100%;
+  margin-left: 30rpx;
+  color: red;
+}
+.order-bottom .pay{
+  float: right;
+  width:240rpx;
+  height: 100%;
+  text-align: center;
+  background: #AB956D;
+  color: #fff;
+}
+
+/*地址*/
+.showAddress{
+  width:710rpx;
+  height: 200rpx;
+  margin-left:20rpx;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #ccc;
+
+}
+.showAddress .address-box{
+  width:510rpx;
+  height: 180rpx;
+  margin-top: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 30rpx;
+}
+.showAddress .address-box .address-top{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.showAddress .arrow{
+  width:200rpx;
+  height: 180rpx;
+  margin-top: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.showAddress .arrow image{
+  width:40rpx;
+  height: 40rpx;
+}

@@ -1,0 +1,17 @@
+<!--pages/tool/tool.wxml-->
+<button size="default" type="default" bindtap="onLaunch" >
+获取token
+</button>
+
+<button size="default" type="default" bindtap="addAddress" >
+添加收货地址
+</button>
+
+<button size="default" type="default" bindtap="pay" >
+下单
+</button>
+
+<button size="default" type="default" bindtap="jumpTo"  >跳转</button>
+
+<view class="add-height"></view>
+<navigator url="/pages/home/home" hover-class="navigator-hover">跳转到新页面</navigator>

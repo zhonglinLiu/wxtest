@@ -1,0 +1,62 @@
+<!--pages/cart/cart.wxml-->
+<view class="container">
+  <block wx:if="{{items.length==0}}" >
+    <view class="emptyMsg">
+      您还没有添加任何商品
+    </view>
+  </block>
+  <block wx:for="{{items}}" >
+    <view class="order-box">
+      <view class="selected-box">
+        <block wx:if="{{item.selectStatus == 1}}" >
+          <image src="../imgs/icon/circle@selected.png" class="selected-icon" data-id="{{item.id}}" bindtap="selectedProduct" ></image>
+        </block>
+        <block wx:else >
+           <image src="../imgs/icon/circle@noselected.png" class="noselect-icon" bindtap="selectedProduct" data-id="{{item.id}}" ></image>
+        </block>
+      </view>
+
+      <view class="image-box">
+        <image src="{{item.main_img_url}}"></image>
+      </view>
+
+      <view class="text-box">
+        <view class="top-box">
+          <text>{{item.name}}</text>
+          <text>￥{{item.price}}</text>
+        </view>
+        <view class="bottom-box">
+          <view class="bottom-box-left">
+            <view bindtap="addOrCutCount"  bindtap="addOrCutCount" data-type="cut" data-id="{{item.id}}" class="{{item.count==1 ? 'disabled' : ''}}" >-</view>
+            <view>{{item.count}}</view>
+            <view bindtap="addOrCutCount" data-type="add" data-id="{{item.id}}" >+</view>
+          </view>
+          <view class="bottom-box-right">
+            <view bindtap="deleteOne" data-id="{{item.id}}" >×</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{items.length!=0}}" >
+    <view class="total-bar">
+      <view class="select-left">
+        <block wx:if="{{isAllSelected}}" >
+          <image data-status="{{isAllSelected}}" src="../imgs/icon/all@selected.png" bindtap="toggleSelectAll"></image>
+        </block>
+        <block wx:else >
+          <image src="../imgs/icon/all.png" data-status="{{isAllSelected}}"  bindtap="toggleSelectAll" ></image>
+        </block>
+        <text>全选({{selectCount}})</text>
+      </view>
+      <view class="select-right">
+        <text>下单</text>
+        <view class="total-price" >
+          <text class="left">|</text><text>￥{{selectedPrice}}</text>
+        </view>
+        <image bindtap="goToOrder" src="../imgs/icon/arrow.png"></image>
+      </view>
+    </view>
+  </block>
+</view>

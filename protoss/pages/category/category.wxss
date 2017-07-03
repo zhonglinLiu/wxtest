@@ -1,0 +1,30 @@
+/* pages/category/category.wxss */
+@import '../tpls/category/category-tpl.wxss';
+page{
+  height: 100%;
+}
+.category-box{
+  width:100%;
+  height: 100%;
+}
+.category-box .left-box{
+  width: 140rpx;
+  height: 100%;
+  border-right: 1rpx solid #ccc;
+  float: left;
+}
+.category-box .right-box{
+  width: 610rpx;
+  float: right;
+}
+.menu-item{
+  width:100%;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+}
+
+.menu-item .selected{
+  color: #AB956D;
+}
