@@ -15,12 +15,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(JSON.parse(options.data));
+    // console.log(JSON.parse(options.data));
     // this.data.orders = JSON.parse(options.data);
     // this.data.totalPrice = options.totalPrice;
     this.setData({
       orders: JSON.parse(options.data),
       totalPrice: options.totalPrice
+    });
+    var _this = this;
+    address.getAddress((res)=>{
+      var info = address.setAddressInfo(res);
+      _this.setData({
+        addressInfo:info,
+      });
     })
   },
 
@@ -28,8 +35,8 @@ Page({
     var _this = this;
     wx.chooseAddress({
       success: function(res){
-        console.log(res);
-        var addressInfo = address.setAddressInfo(res)
+        var addressInfo = address.setAddressInfo(res);
+        console.log(addressInfo);
         _this.__bindAddress(addressInfo);
       }
       

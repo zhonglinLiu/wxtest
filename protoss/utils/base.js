@@ -1,11 +1,14 @@
 import {Config} from './config.js';
+import { Token } from './token.js';
+var token = new Token;
 class Base{
   constructor(){
     this.baseResquestUrl = Config.baseRequestUrl;
   }
 
-  request(opts){
+  request(opts, hasRepect){
     var url = this.baseResquestUrl+opts.url;
+    var _this = this;
     if(!opts.method)
       opts.method = 'GET';
     wx.request({
@@ -17,11 +20,27 @@ class Base{
         'token': wx.getStorageSync('token')
       },
       success: function(res){
-        opts.sCallback && opts.sCallback(res.data);
+        // console.log(res);
+        var code = res.statusCode.toString();
+        if(code.charAt(0)==2){
+          opts.sCallback && opts.sCallback(res.data);          
+        }
+        else{
+          if (!hasRepect){
+            _this.refetch(opts);
+          }
+        }
       },
       fail: function(){
         opts.fCallback && opts.fCallback();
       }
+    })
+  }
+
+  refetch(opts){
+    console.log('bad request');
+    token.getToken((t)=>{
+      this.request(opts,true);
     })
   }
 
