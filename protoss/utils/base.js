@@ -16,8 +16,8 @@ class Base{
       method: opts.method,
       data: opts.data,
       header: {
-        'content-type':'application/json',
-        'token': wx.getStorageSync('token')
+        'content-type': opts.contentType ? opts.contentType :  'application/x-www-form-urlencoded'
+        // 'Authorization': wx.getStorageSync('token')
       },
       success: function(res){
         // console.log(res);
@@ -26,7 +26,7 @@ class Base{
           opts.sCallback && opts.sCallback(res.data);          
         }
         else{
-          if (!hasRepect){
+          if (hasRepect){
             _this.refetch(opts);
           }
         }

@@ -44,9 +44,7 @@
       },
       {
         "pagePath": "pages/tool/tool",
-        "text": "tool",
-        "iconPath": "pages/imgs/toolbar/my.png",
-        "selectedIconPath": "pages/imgs/toolbar/my@selected.png"
+        "text": "tool"
       }
     ],
     "borderStyle": "white",

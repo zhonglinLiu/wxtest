@@ -24,26 +24,58 @@ Page({
         if(res.code){
           console.log(res);
           base.request({
-            url: 'user/get_token',
+            url: 'wxlogin',
             method: 'POST',
             data: {
               'code':res.code,
             },
             sCallback: function(res){
               console.log(res);
-              wx.setStorageSync('token', res.token);
+              wx.setStorageSync('token', res.data.token);
             }
           });
         }
       }
     })
   },
-
+  permission: function() {
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.record']) {
+          wx.authorize({
+            scope: 'scope.record',
+            success() {
+            }
+          })
+        }
+      }
+    })
+  },
+  onGotUserInfo: function(res) {
+   var _this = this
+    wx.getUserInfo({
+      success: function (res) {
+        console.log(res)
+        _this.base.request({
+          url:'wx/set-userinfo',
+          method: 'post',
+          data:{
+            'encryptedData': res.encryptedData,
+            'iv':res.iv
+          },
+          sCallback: function (res) {
+            console.log(res);
+          }
+        })
+      }
+    })
+  },
   addAddress: function(){
     var token = wx.getStorageSync('token');
     this.base.request({
       url:'address',
       method: 'POST',
+      contentType: 'application/json',
       data: {
         name:'刘中林',
         mobile: '17739650739',

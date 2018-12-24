@@ -2,7 +2,10 @@
 <button size="default" type="default" bindtap="onLaunch" >
 获取token
 </button>
-
+<button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button>
+<button size="default" type="default" bindtap="getInfo" >
+getUserInfo
+</button>
 <button size="default" type="default" bindtap="addAddress" >
 添加收货地址
 </button>
